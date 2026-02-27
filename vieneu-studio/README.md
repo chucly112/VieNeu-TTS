@@ -1,13 +1,13 @@
 <p align="center">
-  <img src=".github/assets/icon-dark.webp" alt="Voicebox" width="120" height="120" />
+  <img src=".github/assets/icon-dark.webp" alt="VieNeu Studio" width="120" height="120" />
 </p>
 
-<h1 align="center">Voicebox</h1>
+<h1 align="center">VieNeu Studio</h1>
 
 <p align="center">
-  <strong>The open-source voice synthesis studio.</strong><br/>
+  <strong>Advanced Vietnamese voice synthesis studio.</strong><br/>
   Clone voices. Generate speech. Build voice-powered apps.<br/>
-  All running locally on your machine.
+  Powered by VieNeu-TTS.
 </p>
 
 <p align="center">
@@ -57,18 +57,17 @@
 
 <br/>
 
-## What is Voicebox?
+## What is VieNeu Studio?
 
-Voicebox is a **local-first voice cloning studio** with DAW-like features for professional voice synthesis. Think of it as a **local, free and open-source alternative to ElevenLabs** — download models, clone voices, and generate speech entirely on your machine.
+VieNeu Studio is a **local-first voice cloning studio** for Vietnamese and English. Based on the open-source Voicebox architecture, it uses **VieNeu-TTS** models for superior Vietnamese pronunciation.
 
-Unlike cloud services that lock your voice data behind subscriptions, Voicebox gives you:
+Unlike cloud services that lock your voice data behind subscriptions, VieNeu Studio gives you:
 
 - **Complete privacy** — models and voice data stay on your machine
 - **Professional tools** — multi-track timeline editor, audio trimming, conversation mixing
-- **Model flexibility** — currently powered by Qwen3-TTS, with support for XTTS, Bark, and other models coming soon
+- **Vietnamese Optimized** — powered by VieNeu-TTS (0.5B, 0.3B, and GGUF)
 - **API-first** — use the desktop app or integrate voice synthesis into your own projects
 - **Native performance** — built with Tauri (Rust), not Electron
-- **Super fast on Mac** — MLX backend with native Metal acceleration for 4-5x faster inference on Apple Silicon
 
 Download a voice model, clone any voice from a few seconds of audio, and compose multi-voice projects with studio-grade editing tools. No Python install required, no cloud dependency, no limits.
 
@@ -91,9 +90,9 @@ Voicebox is available now for macOS and Windows.
 
 ## Features
 
-### Voice Cloning with Qwen3-TTS
+### Voice Cloning with VieNeu-TTS
 
-Powered by Alibaba's **Qwen3-TTS** — a breakthrough model that achieves near-perfect voice cloning from just a few seconds of audio.
+Powered by **VieNeu-TTS** — an advanced model that achieves near-perfect voice cloning for Vietnamese from just 3-5 seconds of audio.
 
 - **Instant cloning** — Upload a sample, get a voice profile
 - **High fidelity** — Natural prosody, emotion, and cadence
@@ -247,16 +246,21 @@ make dev
 
 ```bash
 # Clone the repo
-git clone https://github.com/jamiepine/voicebox.git
-cd voicebox
+git clone https://github.com/pnnbao97/VieNeu-TTS.git
+cd VieNeu-TTS
 
 # Install dependencies
-bun install
+cd vieneu-studio/app && bun install && cd ../..
 
 # Install Python dependencies
-cd backend && pip install -r requirements.txt && cd ..
+uv pip install -r vieneu-studio/backend/requirements.txt
 
-# Start development
+# Start backend
+export PYTHONPATH=$PYTHONPATH:.
+python3 -m vieneu-studio.backend.main
+
+# Start frontend (in another terminal)
+cd vieneu-studio/app
 bun run dev
 ```
 
